@@ -6,28 +6,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class GooglePage {
+public class GoogleResultsPage {
     private WebDriver driver;
 
-    //Page URL
-    private static String PAGE_URL="https://www.google.com";
-
     //Locators
+    @FindBy(how = How.CSS, using = "#hdtb-msb-vis > div.hdtb-mitem.hdtb-msel.hdtb-imb > span > img")
+    public WebElement allTab;
 
-    @FindBy(how = How.CSS, using = "input[name='q']")
-    public WebElement searchInput;
+    @FindBy(how = How.CSS, using = "#hdtb-msb-vis > div:nth-child(2)")
+    public WebElement imagesTab;
 
     //Constructor
-    public GooglePage(WebDriver driver){
+    public GoogleResultsPage(WebDriver driver){
         this.driver=driver;
-        driver.get(PAGE_URL);
         //Initialise Elements
         PageFactory.initElements(driver, this);
-    }
-
-    public void typeTextIntoSearchInput(String textToSearch){
-
-        searchInput.sendKeys(textToSearch);
-
     }
 }
