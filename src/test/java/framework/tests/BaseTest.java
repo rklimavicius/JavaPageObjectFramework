@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     WebDriver driver;
-    private static String browser = "Firefox";
+    private static String browser = "Chrome";
 
     @BeforeEach
     public void setup(){
@@ -26,6 +26,7 @@ public class BaseTest {
             System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
         }
 
         if (this.browser=="Firefox")
@@ -33,10 +34,11 @@ public class BaseTest {
             System.setProperty("webdriver.gecko.driver", "C:\\geckodriver\\geckodriver.exe");
             driver = new FirefoxDriver();
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
         }
     }
 
-    protected void WaitForElementToBeClickable(WebElement by)
+    protected void palauktiElemento(WebElement by)
     {
         WebDriverWait wait = new WebDriverWait(driver, 45);
         wait.until(ExpectedConditions.visibilityOf(by));

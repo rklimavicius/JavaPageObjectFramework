@@ -12,13 +12,13 @@ public class TestGoogleSearch extends BaseTest{
 @Test public void performGoogleSearch()
 {
     GooglePage googlePage = new GooglePage(driver);
-    this.WaitForElementToBeClickable(googlePage.searchInput);
+    this.palauktiElemento(googlePage.searchInput);
 
-    googlePage.typeTextIntoSearchInput("pancakes recipe");
+    googlePage.ivestikoieskotiGoogle("pancakes recipe");
     googlePage.searchInput.sendKeys(Keys.ENTER);
 
     GoogleResultsPage resultsPage = new GoogleResultsPage(driver);
-    this.WaitForElementToBeClickable(resultsPage.allTab);
+    this.palauktiElemento(resultsPage.allTab);
 
     assertTrue(resultsPage.imagesTab.isDisplayed());
 }
