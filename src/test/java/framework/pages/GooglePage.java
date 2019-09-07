@@ -25,7 +25,7 @@ public class GooglePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void typeTextIntoSearchInput(String textToSearch){
+    public void ivestikoieskotiGoogle(String textToSearch){
 
         searchInput.sendKeys(textToSearch);
 
